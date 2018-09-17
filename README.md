@@ -7,6 +7,7 @@ It is currently early in production and will take a while to complete.
 -> Starting work on implementing the recording.
 
 -> 2nd stage of UI development COMPLETE:
+
 ![UI #1, part 1 shown](https://i.imgur.com/4Mhk9XZ.png)
 ![UI #2, part 2 shown](https://i.imgur.com/1txrY1M.png)
 
