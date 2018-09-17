@@ -7,9 +7,8 @@ It is currently early in production and will take a while to complete.
 -> Starting work on implementing the recording.
 
 -> 2nd stage of UI development COMPLETE:
-
-![UI #1, part 1 shown](https://i.imgur.com/qoRQCXw.png)
-![UI #2, part 2 shown](https://i.imgur.com/A5cwUBf.png)
+![UI #1, part 1 shown](https://i.imgur.com/4Mhk9XZ.png)
+![UI #2, part 2 shown](https://i.imgur.com/1txrY1M.png)
 
 
 ## Demands:
@@ -40,6 +39,10 @@ Android Visual Studio
 https://i.imgur.com/9lectwu.png
 
 https://i.imgur.com/NQZMAZp.png
+
+https://i.imgur.com/qoRQCXw.png
+
+https://i.imgur.com/A5cwUBf.png
 
 ## Author
 * **Matic Beguš** - *Entire application* - [Auto94](https://github.com/auto94)
