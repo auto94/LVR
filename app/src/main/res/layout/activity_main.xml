@@ -67,17 +67,7 @@
                     android:textAllCaps="true"
                     android:background="@drawable/limit_button_selector_2"
                     style="?android:attr/borderlessButtonStyle"/>
-                <ToggleButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/noLimitButton"
-                    android:textOn="@string/noLimitButtonString"
-                    android:textOff="@string/noLimitButtonString"
-                    android:textColor="@color/darkText"
-                    android:background="@drawable/limit_button_selector_2"
-                    android:textAllCaps="true"
-                    style="?android:attr/borderlessButtonStyle"/>
+
             </LinearLayout>
             <RelativeLayout
                 android:layout_width="match_parent"

@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
     int selectedResolution = 0;
     int maxVideoFileSize = 0;
     int minAllowedBattery = 0;
-    int maxHours = 0;
-    int maxMinutes = 0;
+    int maxHours = -1;
+    int maxMinutes = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        noLimitToggleButton = findViewById(R.id.noLimitButton);
+        //noLimitToggleButton = findViewById(R.id.noLimitButton);
         //Code for the limits of videos:
         TextView limitTV = findViewById(R.id.limitByTV);
         final Typeface fontLimit = Typeface.createFromAsset(getAssets(), "fonts/Heebo-Regular.ttf");
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     mAnimationManager.expand(relLayoutSize, 500, 250);
                     isSizeSelected = true;
-                    noLimitToggleButton.setChecked(false);
+                    //noLimitToggleButton.setChecked(false);
                     isNONESelected = false;
                 }
             }
@@ -223,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     mAnimationManager.expand(relLayoutTime, 500, 270);
                     isTimeSelected = true;
-                    noLimitToggleButton.setChecked(false);
+                    //noLimitToggleButton.setChecked(false);
                     isNONESelected = false;
                 }
             }
@@ -335,7 +335,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 maxMinutes = Integer.parseInt(minutesET.getText().toString());
                 if (currentAction == EditorInfo.IME_ACTION_DONE) {
-                    recordForTV.setText("Record for approximately " + timeUntil(maxHours, maxMinutes));
+                    String recordForString = String.format(getResources().getString(R.string.recordForApproxString), timeUntil(maxHours, maxMinutes));
+                    recordForTV.setText(recordForString);
+                    minutesET.setCursorVisible(false);
                     return false;
                 }
                 else {
@@ -369,7 +371,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     mAnimationManager.expand(relLayoutBattery, 500, 250);
                     isBatterySelected = true;
-                    noLimitToggleButton.setChecked(false);
+                    //noLimitToggleButton.setChecked(false);
                     isNONESelected = false;
                 }
             }
@@ -394,30 +396,30 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Code for NONE limit button
-        noLimitToggleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!isNONESelected) {
-                    limitButtonBattery.setChecked(false);
-                    limitButtonTime.setChecked(false);
-                    limitButtonSize.setChecked(false);
-
-                    mAnimationManager.collapse(relLayoutBattery, 500, 0);
-                    isBatterySelected = false;
-
-                    mAnimationManager.collapse(relLayoutSize, 500, 0);
-                    isSizeSelected = false;
-
-                    mAnimationManager.collapse(relLayoutTime, 500, 0);
-                    isTimeSelected = false;
-
-                    isNONESelected = true;
-                }
-                else {
-                    isNONESelected = false;
-                }
-            }
-        });
+//        noLimitToggleButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (!isNONESelected) {
+//                    limitButtonBattery.setChecked(false);
+//                    limitButtonTime.setChecked(false);
+//                    limitButtonSize.setChecked(false);
+//
+//                    mAnimationManager.collapse(relLayoutBattery, 500, 0);
+//                    isBatterySelected = false;
+//
+//                    mAnimationManager.collapse(relLayoutSize, 500, 0);
+//                    isSizeSelected = false;
+//
+//                    mAnimationManager.collapse(relLayoutTime, 500, 0);
+//                    isTimeSelected = false;
+//
+//                    isNONESelected = true;
+//                }
+//                else {
+//                    isNONESelected = false;
+//                }
+//            }
+//        });
 
         final TextView selectFPSTV = findViewById(R.id.selectFpsTV);
         selectFPSTV.setTypeface(fontLimit);
@@ -668,7 +670,7 @@ public class MainActivity extends AppCompatActivity {
                     allInfo = allInfo + "Min Battery: " + minAllowedBattery + " % ";
                 }
 
-                if (isTimeSelected) {
+                if (isTimeSelected && maxHours >= 0 && maxMinutes >= 0) {
                     allInfo = allInfo + "Record until: " + maxHours + " : " + maxMinutes + " ";
                 }
 
